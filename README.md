@@ -17,3 +17,5 @@ I'll also add that I never actually transmitted a transaction (not 100% the tran
 So don't use it as is, modify it to work for you.
 
 You can watch the transactions using MetaMask here https://feedthedogs.github.io/EDWatch/index.html
+
+![alt text](https://github.com/feedthedogs/EDWatch/blob/master/edwatch.png)
