@@ -15,3 +15,5 @@ It is currently in an ASP.NET solution, but there is no server side functionalit
 I'll also add that I never actually transmitted a transaction (not 100% the transaction creation works) and the values for tokens would be a few weeks out of date and the scale would be wrong for quite a few.
 
 So don't use it as is, modify it to work for you.
+
+You can watch the transactions using MetaMask here https://feedthedogs.github.io/EDWatch/index.html
