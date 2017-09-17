@@ -76,12 +76,12 @@ function CheckTransactionValue(transDetails, tx) {
     var price, action;
     if (transDetails.tokenGive.name == "ETH") {
         action = "buy";
-        price = transDetails.tokenGive.normalnum.div(transDetails.tokenGet.normalnum);
+        price = transDetails.tokenGive.normalnum / transDetails.tokenGet.normalnum;
         WriteLog(action + "ing:" + transDetails.tokenGet.name + " " + transDetails.amount.normal + "/" + transDetails.tokenGet.normal + " at " + price.toString(10) + " - " + web3.fromWei(tx.gasPrice, "gwei").toString(10) + ' - ' + tx.hash);
     }
     else if (transDetails.tokenGet.name == "ETH") {
         action = "sell"
-        price = transDetails.tokenGet.normalnum.div(transDetails.tokenGive.normalnum);
+        price = transDetails.tokenGet.normalnum / transDetails.tokenGive.normalnum;
         WriteLog(action + "ing:" + transDetails.tokenGive.name + " " + transDetails.amount.normal + "/" + transDetails.tokenGet.normal + " at " + price.toString(10) + " - " + web3.fromWei(tx.gasPrice, "gwei").toString(10) + ' - ' + tx.hash);
     }
     else {
