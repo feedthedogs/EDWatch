@@ -101,7 +101,7 @@ function CheckTransactionValue(transDetails, tx) {
         }
     }
     */
-    return txAction;
+    //return txAction;
 }
 
 function TransactionDetails(abiVals) {
