@@ -58,15 +58,16 @@ function ReadTransaction(error, tx) {
                 WriteLog("Duplicate, already sent - " + tx.input);
                 return;
             }
-            var worthBuying = CheckTransactionValue(transDetails, tx);
-            if (worthBuying)
-            {
-                var rawTrans = CreateOwnTransaction(tx);
-                console.log(rawTrans);
-                web3.eth.sendRawTransaction(rawTrans);
-                $.post('https://api.etherscan.io/api', 'module=proxy&action=eth_sendRawTransaction&hex=' + rawTrans);
-                sent.push(tx.input);
-            }
+            CheckTransactionValue(transDetails, tx);
+            //var worthBuying = CheckTransactionValue(transDetails, tx);
+            //if (worthBuying)
+            //{
+            //    var rawTrans = CreateOwnTransaction(tx);
+            //    console.log(rawTrans);
+            //    web3.eth.sendRawTransaction(rawTrans);
+            //    $.post('https://api.etherscan.io/api', 'module=proxy&action=eth_sendRawTransaction&hex=' + rawTrans);
+            //    sent.push(tx.input);
+            //}
         }
     }
 }
@@ -87,7 +88,7 @@ function CheckTransactionValue(transDetails, tx) {
         action = "inter token"
         price = "don't care"
     }
-
+    /*
     var txAction = false;
     if (price != "don't care" & transDetails.tokenGet.buyprice != 0) {
         if (action == "buy" & price.gte(transDetails.tokenGet.sellprice)) {
@@ -99,7 +100,7 @@ function CheckTransactionValue(transDetails, tx) {
             WriteLog("sell !!!!!!!!!!!!!!!!!!!!");
         }
     }
-
+    */
     return txAction;
 }
 
@@ -116,8 +117,8 @@ function Token(taddr, wei) {
         return null;
     }
     this.wei = new web3.BigNumber(wei);
-    this.normal = web3.fromWei(this.wei.times(_token.scalem), _token.scale).toString(10);
-    this.normalnum = web3.fromWei(this.wei.times(_token.scalem), _token.scale)
+    this.normal = wei.div(Math.pow(10,_token.decimals));
+    this.normalnum = wei.div(Math.pow(10,_token.decimals));
     this.name = _token.name;
     this.buyprice = _token.buyprice;
     this.sellprice = _token.sellprice;
