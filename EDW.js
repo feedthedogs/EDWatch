@@ -117,8 +117,8 @@ function Token(taddr, wei) {
         return null;
     }
     this.wei = new web3.BigNumber(wei);
-    this.normal = wei.div(Math.pow(10,_token.decimals));
-    this.normalnum = wei.div(Math.pow(10,_token.decimals));
+    this.normal = wei / Math.pow(10,_token.decimals);
+    this.normalnum = wei / Math.pow(10,_token.decimals);
     this.name = _token.name;
     this.buyprice = _token.buyprice;
     this.sellprice = _token.sellprice;
